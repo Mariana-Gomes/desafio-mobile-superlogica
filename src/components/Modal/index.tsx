@@ -20,6 +20,9 @@ import {
   TextButton,
   CalendarIcon,
   DateInfo,
+  CharacterCard,
+  CharacterNameContainer,
+  CardName
 } from './styles';
 
 interface ModalProps {
@@ -35,7 +38,6 @@ interface ModalProps {
     url: string;
   }
 }
-
 
 const ModalEpisodes: React.FC<ModalProps> = ({modalVisible, setModalVisible, episodeData}) => {
 
@@ -75,14 +77,13 @@ const ModalEpisodes: React.FC<ModalProps> = ({modalVisible, setModalVisible, epi
 
   const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity style={{marginLeft: 10, marginRight: 5}} onPress={() => { navigateToCharacter(item)}}>
+      <CharacterCard onPress={() => {navigateToCharacter(item)}}>
         <ImageBackground style={{height: 130, width: 100}} source={{uri: item.image}} resizeMode='cover' imageStyle={{borderRadius: 6, position: 'relative'}}>
-          <View style={{position: 'absolute', bottom: 0, width: 100, backgroundColor: 'rgba(0, 0, 0, 0.5)', paddingVertical: 3, paddingLeft: 3, borderBottomEndRadius: 6, borderBottomStartRadius: 6}}>
-            <Text style={{color: '#fff',}} numberOfLines={1}>{item.name}</Text>
-          </View>
+          <CharacterNameContainer>
+            <CardName numberOfLines={1}>{item.name}</CardName>
+          </CharacterNameContainer>
         </ImageBackground>
-        
-      </TouchableOpacity>
+      </CharacterCard>
     )
   }
 
@@ -117,12 +118,7 @@ const ModalEpisodes: React.FC<ModalProps> = ({modalVisible, setModalVisible, epi
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
                 />
-
-                {/* <ContainerImageCharacters>
-                    <ImageCharacters />
-                    <ImageCharacters />
-                    <ImageCharacters />
-                </ContainerImageCharacters> */}
+                
                 <Pressable
                   onPress={() => setModalVisible(false)}
                 >

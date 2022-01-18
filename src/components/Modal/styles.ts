@@ -49,7 +49,6 @@ export const TitleModal = styled(InfosModal)`
     padding-bottom: 10px;
 `;
 
-
 export const OtherChacaraters = styled(InfosModal)`
     font-size: 18px;
     font-weight: bold;
@@ -78,6 +77,25 @@ export const TextButton = styled.Text`
 export const DateInfo = styled.View`
     flex-direction: row;
     align-items: baseline;
+`;
+
+export const CharacterCard = styled.TouchableOpacity`
+    margin: 0 5px 0 10px;
+`;
+
+export const CharacterNameContainer = styled.View`
+    bottom: 0;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 3px 0 3px 3px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;    
+    position: absolute;
+`;
+
+export const CardName = styled.Text`
+    color: ${colors.white};
+    font-weight: bold;
 `;
 
 export const CalendarIcon = styled(Icon).attrs(() => ({

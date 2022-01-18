@@ -1,10 +1,14 @@
+import { Dimensions } from 'react-native';
 import styled from "styled-components/native";
 import colors from '../../assets/styles/colors';
 import Icon from 'react-native-vector-icons/AntDesign';
 
+const width = Dimensions.get("screen").width
+
 interface Props{
   status?: string;
   favorite?: boolean;
+  active?: boolean;
 }
 
 export const Text = styled.Text`
@@ -109,6 +113,35 @@ export const FavoriteButton = styled.TouchableOpacity`
   border-radius: 30px;
   align-items: center;
   justify-content: center;
+`;
+
+export const TabsContainer = styled.View`
+  flex-direction: row;
+  margin: 15px 0;
+`;
+
+export const TabButton = styled.TouchableOpacity<Props>`
+  justify-content: center;
+  align-items: center;
+  width: ${width/2}px;
+  border-bottom-color:  ${({active}) => active ? colors.white : colors.secondary};
+  border-bottom-width: 2px;
+  padding-bottom: 10px;
+`;
+
+export const TabText = styled.Text<Props>`
+  color: #fff;
+  font-size: 14px;
+`;
+
+export const FavoriteAlertContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FavoriteAlert = styled.Text`
+  color: ${colors.gray}
 `;
 
 export const SearchIcon = styled(Icon).attrs(() => ({

@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {getCharacters, filterCharacters} from '../../services/api';
-import Loading from '../../components/Loading';
+import {getCharacters, filterCharacters, getCharacterById} from '../../services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loading from '../../components/Loading';
 import { useIsFocused } from '@react-navigation/native';
+
 import {
   Container, 
   CharactersList, 
@@ -20,7 +21,12 @@ import {
   Title,
   SearchContainer,
   SearchInput,
-  SearchIcon
+  SearchIcon,
+  TabsContainer,
+  TabButton,
+  TabText,
+  FavoriteAlertContainer,
+  FavoriteAlert,
 } from './styles';
 
 const Home: React.FC = ({navigation}) => {
@@ -30,7 +36,15 @@ const Home: React.FC = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [dataFavorites, setDataFavorites] = useState([]);
   const [favorites, setFavorites] = useState<number[]>([]);
+
+  const listTab = [
+    { status: 'All' },
+    { status: 'Favorites' },
+  ]
+
+  const [tabActive, setTabActive] = useState('All');
 
   useEffect(() => {
     loadCharacters()
@@ -42,7 +56,7 @@ const Home: React.FC = ({navigation}) => {
 
   useEffect(() => {
     getFavoriteCharacter()
-  },[isFocused])
+  }, [isFocused])
 
   const getFavoriteCharacter = async () => {
     const res = await AsyncStorage.getItem('favoriteList')
@@ -61,6 +75,19 @@ const Home: React.FC = ({navigation}) => {
     setLoading(false);
   }
 
+  const loadFavoriteCharacters = async () => {
+    const favoriteList = await AsyncStorage.getItem('favoriteList');
+
+    let array: any = [];
+    if(favoriteList != null){
+      for (const favorite of JSON.parse(favoriteList)) {
+        const res = await getCharacterById(favorite.toString());
+        array.push(res)
+      }
+    }
+    setDataFavorites(array)
+  }
+
   const searchCharacters = async() => {
     const res = await filterCharacters(searchText);
     setSearchResult(res)
@@ -70,7 +97,12 @@ const Home: React.FC = ({navigation}) => {
     if(searchText != ""){
       return searchResult
     }
-    return data 
+    
+    if(tabActive === 'All'){
+      return data;
+    }else{
+      return dataFavorites;
+    }
   }
 
   const renderListLoading = () => {
@@ -93,9 +125,18 @@ const Home: React.FC = ({navigation}) => {
       await AsyncStorage.setItem('favoriteList', JSON.stringify(favorites))
     }
 
-    await loadCharacters()
+    await loadCharacters();
   }
   
+  const setStatusFilter = async(status: string) => {
+    setTabActive(status)
+    if (status !== 'All'){
+        await loadFavoriteCharacters();
+    }else {
+      setPage(1);
+      await loadCharacters();
+    }
+}
 
   const renderItem = ({ item }) => (
     <ItemContainer onPress={() => {navigation.navigate("Characters", item)}}>
@@ -121,9 +162,9 @@ const Home: React.FC = ({navigation}) => {
     </ItemContainer>
   );
 
-  if (loading) {
-    return(
-      <Loading/>
+  if (data.length === 0) {
+    return (
+      <Loading />
     )
   }
 
@@ -141,15 +182,38 @@ const Home: React.FC = ({navigation}) => {
         />
       </SearchContainer>
 
+      <TabsContainer>
+        {listTab.map((tab, index) => (
+          <TabButton
+            key={index}
+            active={tabActive === tab.status}
+            onPress={() => setStatusFilter(tab.status)}
+          >
+            <TabText
+              active={tabActive === tab.status}
+            >
+              {tab.status}
+            </TabText>
+          </TabButton>
+        ))}
+      </TabsContainer>
+
+      {dataFavorites.length === 0 && tabActive === 'Favorites' && (
+        <FavoriteAlertContainer>
+          <FavoriteAlert>You don't have favorite characters</FavoriteAlert>
+        </FavoriteAlertContainer>
+      )}
+
       <CharactersList
         data={listData()}
         renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
         contentContainerStyle={{ marginHorizontal: 16}}
-        onEndReached={searchText === "" && loadCharacters}
+        onEndReached={searchText === "" && tabActive === 'All' && loadCharacters}
         onEndReachedThreshold={0.1}
         ListFooterComponent={renderListLoading}
       />
+
     </Container>
   )
 }

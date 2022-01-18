@@ -11,6 +11,11 @@ export const filterCharacters = async(name:string) => {
     return result.data.results;
 }
 
+export async function getCharacterById(id: string) {
+    const result = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+    return result.data
+}
+
 export async function getEpisodesByUrl(url: string) {
     const result = await axios.get(url);
     return result.data
