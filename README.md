@@ -1,33 +1,38 @@
-# Desafio em React Native
+# Desafio Superlógica - App Rick and Morty
 
-## O que esperamos que você faça?
-A ideia é bem simples, queremos um aplicativo que nos mostre todos os personagens da Série Rick and Morty além de suas localizações e episódios.
+![capa](https://imgur.com/FKdP05N)
 
-## Requisitos básicos:
-- Utilizar a API de personsagens: (https://rickandmortyapi.com/)
-- O aplicativo deve conter uma listagem paginada em infinite scroll;
-- Uma modal com os detalhes do personagem;
-- Deve ser possível favoritar um personagem; (os favoritos devem ser salvos em base local.)
-- Deverá disponibilizar dois filtros: nome do personagem, e meus favoritos;
+## Qual era o desafio?
 
-## Requisitos técnicos:
-- TypeScript;
-- Redux;
-- Usar persistência de dados; (a livre escolha de base.)
+O desafio consistia em criar um aplicativo que mostrasse todos os personagens da série Rick and Morty, além disso era necessário que a tela possuisse um infinete scroll. Esse aplicativo deve também mostrar os detalhes dos personagens sendo possível favoritá-los.
 
-## Gostaríamos que:
-- Sua imaginação fluísse em relação a interface.
-- Caso tenha tempo, fique a vontade para adicionar o que achar necessário. (mas o tempo estará contando!!!)
+## O que há no App?
 
-## O que iremos avaliar:
-- **Iremos observar principalmente a forma com que você irá aplicar o JavaScript.**
-- Organização estrutural do projeto;
-- Utilização de padrões de desenvolvimento;
-- Bom código;
-- Tempo utilizado;
-- UI/UX; (não precisa ser a melhor, mas precisa ser funcional.)
+- Tela de listagem dos personagens, com infinite scroll;
+- Tela de detalhes do personagem;
+- Modal de detalhes de um episódio;
+- Filtro pelo nome do personagem;
+- Funcionalidade de favoritar/desfavoritar um personagem;
+- Listagem de personagens favoritos;
 
-## Como iremos avaliar?
-- Faça um fork desse repósitorio.
-- Publique o teste no expo.io e disponibilize o QRCode no README do projeto
-- Após isso, é conosco!
+## Rodando o app:
+
+- Clone o repositório:
+```bash
+git clone https://github.com/Mariana-Gomes/desafio-mobile-superlogica.git
+```
+
+- Instale as dependências:
+```bash
+yarn install
+```
+
+- Rode a aplicação:
+```bash
+yarn start
+```
+
+- Utilizando o aplicativo "Expo Go" em seu celular scaneie o QRCode que será gerado ou o QRCode que está aqui embaixo:
+
+![qrcode](https://imgur.com/t50bRxj)
+
