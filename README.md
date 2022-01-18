@@ -1,6 +1,6 @@
 # Desafio Superlógica - App Rick and Morty
 
-
+![DesafioSuperlogicaRick](https://user-images.githubusercontent.com/49926181/149870503-121b2663-67c3-4bab-a137-f48023282da5.png)
 
 ## Qual era o desafio?
 
