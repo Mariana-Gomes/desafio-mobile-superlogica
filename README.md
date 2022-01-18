@@ -8,7 +8,7 @@ O desafio consistia em criar um aplicativo que mostrasse todos os personagens da
 
 ## O que há no App?
 
-- Tela de listagem dos personagens, com infinite scroll;
+- Tela de listagem dos personagens com infinite scroll;
 - Tela de detalhes do personagem;
 - Modal de detalhes de um episódio;
 - Filtro pelo nome do personagem;
