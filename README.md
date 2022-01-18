@@ -1,6 +1,6 @@
 # Desafio Superlógica - App Rick and Morty
 
-![capa](https://imgur.com/FKdP05N)
+
 
 ## Qual era o desafio?
 
@@ -34,5 +34,5 @@ yarn start
 
 - Utilizando o aplicativo "Expo Go" em seu celular scaneie o QRCode que será gerado ou o QRCode que está aqui embaixo:
 
-![qrcode](https://imgur.com/t50bRxj)
+
 
