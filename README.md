@@ -34,7 +34,7 @@ yarn start
 
 - Utilizando o aplicativo "Expo Go" em seu celular scaneie o QRCode que será gerado ou o QRCode que está aqui embaixo:
 
-![QRCode-RickAndMorty](https://user-images.githubusercontent.com/49926181/149871464-ba2b6002-9902-4e6d-baaa-dbb343a7052f.png)
+![qrcodeRick](https://user-images.githubusercontent.com/49926181/149871836-61800a81-86b1-466a-9efb-5eda1df33210.png)
 
 
 
