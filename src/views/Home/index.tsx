@@ -177,7 +177,7 @@ const Home: React.FC = ({navigation}) => {
         <SearchInput 
           value={searchText}
           onChangeText={text => setSearchText(text)}
-          placeholder='Buscar'
+          placeholder='Search'
           placeholderTextColor="#7D7D7D" 
         />
       </SearchContainer>
