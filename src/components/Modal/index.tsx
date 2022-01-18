@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, View, Text, Pressable, StyleSheet, Image, FlatList, ImageBackground, TouchableOpacity } from 'react-native';
+import { Modal, Pressable, FlatList, ImageBackground } from 'react-native';
 import { getCharacterByUrl } from '../../services/api';
 import Loading from '../../components/Loading';
 import { useNavigation } from '@react-navigation/native';

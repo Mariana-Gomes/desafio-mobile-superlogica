@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const getCharacters = async(page: number) => {
     const result = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`);
     return result.data.results;

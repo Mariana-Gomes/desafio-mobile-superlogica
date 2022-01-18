@@ -189,11 +189,7 @@ const Home: React.FC = ({navigation}) => {
             active={tabActive === tab.status}
             onPress={() => setStatusFilter(tab.status)}
           >
-            <TabText
-              active={tabActive === tab.status}
-            >
-              {tab.status}
-            </TabText>
+            <TabText>{tab.status}</TabText>
           </TabButton>
         ))}
       </TabsContainer>

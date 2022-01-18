@@ -31,7 +31,7 @@ interface EpisodeData {
   url: string;
 }
 
-  const Home: React.FC = ({route}) => {
+  const Characters: React.FC = ({route}) => {
 
   const character = route.params
   const [data, setData] = useState([]);
@@ -128,4 +128,4 @@ interface EpisodeData {
   )
 }
 
-export default Home;
+export default Characters;
