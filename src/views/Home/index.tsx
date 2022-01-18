@@ -94,7 +94,7 @@ const Home: React.FC = ({navigation}) => {
   }
 
   const listData = () =>{
-    if(searchText != ""){
+    if(searchText != "" && tabActive === 'All'){
       return searchResult
     }
     
